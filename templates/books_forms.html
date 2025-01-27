@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>{% if book %}Edit Book{% else %}Add Book{% endif %}</title>
+    </head>
+    <body>
+        <h1>{% if book %}Edit Book{% else %}Add Book{% endif %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label>Title:</label>
+            <input type="text" name="title" value="{{ book.title|default:'' }}" required><br>
+            <label>Author:</label>
+            <input type="text" name="author" value="{{ book.author|default:'' }}" required><br>
+            <label>Price:</label>
+            <input type="number" name="price" step="0.01" value="{{ book.price|default:'' }}" required><br>
+        <label>Publisher:</label>
+        <input type="text" name="publisher" value="{{ book.publisher|default:'' }}" required><br>
+        <label>Published Date:</label>
+        <input type="date" name="pubdate" value="{{ book.pubdate|default:'' }}" required><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+    </html>
